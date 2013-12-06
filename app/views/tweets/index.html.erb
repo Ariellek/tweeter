@@ -10,8 +10,12 @@
 
 <% @tweets.each do |tweet| %>
   <div>
-    <%= highlight tweet.body, @query %>
+        <%= truncate tweet.body, length: 80 %>
+    <%= pluralize tweet.body.length, 'character' %>
     - <%= tweet.created_at %>
     by <strong><%= tweet.author %></strong>
+    <%= link_to 'view more', tweet_path(tweet) %>
   </div>
+
 <% end %>
+
